@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="aidemo.AppHost/aidemo.AppHost.csproj" />
+  <Project Path="aidemo.Server/aidemo.Server.csproj" />
+  <Project Path="frontend/frontend.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
