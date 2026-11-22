@@ -2,6 +2,35 @@
 
 Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all operations.
 
+## Read and claim an issue
+
+- **Read**: every issue read takes one shape, which is allowlisted, so it runs unprompted: `gh issue view <n> --json title,body,comments,assignees` in the PowerShell tool, used whole.
+  - Several issues: chain them with `;` in one call.
+  - A slice: narrow with `--jq`, e.g. `--jq '.comments[-1].body'`.
+  - A result too large for the tool output: the tool saves it to a file and names the path; read that file with Read or Grep.
+- **Claim**: if the read shows `assignees` already set, stop and ask. Otherwise run `gh issue edit <n> --add-assignee "@me"; gh issue view <n> --json assignees`, and check the output shows the assignee.
+
+## Body writes
+
+Every `gh` write of an issue or PR body (create or edit) and every multi-line issue/PR comment:
+
+- **Edit from the stored body.** To change an existing body, save it to a file with `E:\Repos\aidemo\.docs\scripts\Get-GhBody.ps1 -File <file> -Issue|-Pr|-Comment <n>` and edit that file.
+- **Compose in a file, post with `--body-file`** - never inline the body in a shell string. Shell string handling mangles markdown escaping and non-ASCII characters, and corruption lands stored on GitHub, not just in the terminal.
+- **Outcome = intent.** A write is complete only when the body stored on GitHub matches the source file: compare it to the file you posted with `E:\Repos\aidemo\.docs\scripts\Test-GhBody.ps1 -File <file> -Issue|-Pr|-Comment <n>`. Any difference - a missing character, an unexpected codepoint, altered whitespace - is a failed write: re-post from the file and verify again. Terminal rendering of a read-back is not evidence: the console can hide or invent corruption.
+
+## Revision history
+
+Every issue body - not PR bodies - ends with a `## Revision History` section. Append one line per body modification (the creation itself included; comments do not count); never rewrite an earlier line.
+
+Line shape, newest last:
+
+`- <YYYY-MM-DD> - <github-username> - <session-id> - <summary of the change in <= 8 words>`
+
+- `github-username`: the acting GitHub identity that made the write.
+- `session-id`: the current agent session id; `human` when there is no agent session.
+- Date: UTC, ISO 8601.
+- Creating an issue seeds the section with its creation line, e.g. `- 2025-11-02 - jenkinsonc - human - created`.
+
 ## Conventions
 
 - **Create an issue**: `gh issue create --title "..." --body "..."`. Use a heredoc for multi-line bodies.

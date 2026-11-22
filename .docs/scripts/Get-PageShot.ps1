@@ -1,7 +1,7 @@
 # Screenshots a page of the running dev server (npm run dev) with headless Edge.
-# Runs from the repo root or jarvis.Web. Chain several calls with ; to capture several pages.
+# Runs from the repo root or frontend. Chain several calls with ; to capture several pages.
 #   .\.docs\scripts\Get-PageShot.ps1 -Page '/?face=A' -Out <scratchpad>\face-A.png      (repo root)
-#   ..\.docs\scripts\Get-PageShot.ps1 -Page '/?face=A' -Out <scratchpad>\face-A.png     (jarvis.Web)
+#   ..\.docs\scripts\Get-PageShot.ps1 -Page '/?face=A' -Out <scratchpad>\face-A.png     (frontend)
 param(
     [Parameter(Mandatory)][string]$Page,
     [Parameter(Mandatory)][string]$Out,

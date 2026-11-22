@@ -14,7 +14,7 @@ Most repos have a single context:
 ```
 /
 ├── GLOSSARY.md
-├── docs/
+├── .docs/
 │   └── adr/
 │       ├── 0001-event-sourced-orders.md
 │       └── 0002-postgres-for-write-model.md
@@ -26,18 +26,18 @@ If a `GLOSSARY-MAP.md` exists at the root, the repo has multiple contexts. The m
 ```
 /
 ├── GLOSSARY-MAP.md
-├── docs/
+├── .docs/
 │   └── adr/                          ← system-wide decisions
 ├── src/
 │   ├── ordering/
 │   │   ├── GLOSSARY.md
-│   │   └── docs/adr/                 ← context-specific decisions
+│   │   └── .docs/adr/                 ← context-specific decisions
 │   └── billing/
 │       ├── GLOSSARY.md
-│       └── docs/adr/
+│       └── .docs/adr/
 ```
 
-Create files lazily: only when you have something to write. If no `GLOSSARY.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed.
+Create files lazily: only when you have something to write. If no `GLOSSARY.md` exists, create one when the first term is resolved. If no `.docs/adr/` exists, create it when the first ADR is needed.
 
 ## During the session
 
