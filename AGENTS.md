@@ -5,7 +5,7 @@ Operating rules for every session. Coding rules the reviewer checks live in `COD
 ## Done means green
 Work is done when the repo is **green**: fresh, unfiltered, zero warnings and zero errors. A filtered or incremental run does not establish green: it says nothing about files outside the filter, and incremental reuse silently re-suppresses warnings on files that were not touched.
 
-- **.NET**: `dotnet build E:\Repos\aidemo\aidemo.slnx --no-incremental /p:NuGetAudit=false` and an unfiltered `dotnet test E:\Repos\aidemo\aidemo.slnx --no-build`, both clean. Read the whole output of each.
+- **.NET**: `dotnet build E:\Repos\ai-demo\aidemo.slnx --no-incremental /p:NuGetAudit=false` and an unfiltered `dotnet test E:\Repos\ai-demo\aidemo.slnx --no-build`, both clean. Read the whole output of each.
 - **Web**: `npm run lint`, `npm run typecheck` and `npm test`, each run from `frontend`.
 - **IDE**: no IDE diagnostic left on any file the change touches (`getDiagnostics` in Claude Code, `get_errors` in Copilot). The build does not surface every IDE diagnostic.
 
@@ -20,7 +20,7 @@ Before any `gh` read or write of an issue or PR - reading or claiming a ticket, 
 
 ## Shell
 - **Prefer the simplest working command.** If a flag does not work, remove it and re-evaluate the command rather than laying on more flags.
-- **Chaining**: chain allowlisted commands with plain `;`. Give a command that prompts (`git commit`, `git push`, `gh pr create`, a scratchpad script) its own call, so the allowlisted work around it runs unprompted. Anything wrapped around or in front of an allowlisted command prompts: a `cd` (give it its own call), `if ($?) { … }`, `try { … }`, `$var = …`, `$env:X = …`. Write paths and IDs out in full (`repos/jenkinsonc/aidemo/...`, not `$s` or `{owner}/{repo}`).
+- **Chaining**: chain allowlisted commands with plain `;`. Give a command that prompts (`git commit`, `git push`, `gh pr create`, a scratchpad script) its own call, so the allowlisted work around it runs unprompted. Anything wrapped around or in front of an allowlisted command prompts: a `cd` (give it its own call), `if ($?) { … }`, `try { … }`, `$var = …`, `$env:X = …`. Write paths and IDs out in full (`repos/jenkinsonc/ai-demo/...`, not `$s` or `{owner}/{repo}`).
 - **Bash**: shell work goes in PowerShell. Wait on a background task's output with Monitor. Dev ports are in each project's `Properties/launchSettings.json`.
 - **Trimming native output**: use `| Select-Object -Last N`, or a native flag (`git remote get-url origin`, `git log -n`). `-First` closes the pipe early, so the exe exits non-zero. Elsewhere, filter with the tool's own flag where one exists: `gh … --jq '… | select(test(\"x\"))'` (escape inner quotes for PowerShell 5.1), `git ls-files ':!dir'`.
 - **Commit messages**: write the message to a scratchpad file with Write, then `git commit -F <file>` - the same shape as `gh pr create --body-file`.

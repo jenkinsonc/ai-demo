@@ -14,9 +14,9 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 
 Every `gh` write of an issue or PR body (create or edit) and every multi-line issue/PR comment:
 
-- **Edit from the stored body.** To change an existing body, save it to a file with `E:\Repos\aidemo\.docs\scripts\Get-GhBody.ps1 -File <file> -Issue|-Pr|-Comment <n>` and edit that file.
+- **Edit from the stored body.** To change an existing body, save it to a file with `E:\Repos\ai-demo\.docs\scripts\Get-GhBody.ps1 -File <file> -Issue|-Pr|-Comment <n>` and edit that file.
 - **Compose in a file, post with `--body-file`** - never inline the body in a shell string. Shell string handling mangles markdown escaping and non-ASCII characters, and corruption lands stored on GitHub, not just in the terminal.
-- **Outcome = intent.** A write is complete only when the body stored on GitHub matches the source file: compare it to the file you posted with `E:\Repos\aidemo\.docs\scripts\Test-GhBody.ps1 -File <file> -Issue|-Pr|-Comment <n>`. Any difference - a missing character, an unexpected codepoint, altered whitespace - is a failed write: re-post from the file and verify again. Terminal rendering of a read-back is not evidence: the console can hide or invent corruption.
+- **Outcome = intent.** A write is complete only when the body stored on GitHub matches the source file: compare it to the file you posted with `E:\Repos\ai-demo\.docs\scripts\Test-GhBody.ps1 -File <file> -Issue|-Pr|-Comment <n>`. Any difference - a missing character, an unexpected codepoint, altered whitespace - is a failed write: re-post from the file and verify again. Terminal rendering of a read-back is not evidence: the console can hide or invent corruption.
 
 ## Revision history
 
