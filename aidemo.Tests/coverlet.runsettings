@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat code coverage">
+        <Configuration>
+          <Format>cobertura</Format>
+          <!-- Aspire orchestration: runs only when the stack is launched, never under test. -->
+          <Exclude>[aidemo.AppHost]*</Exclude>
+          <!-- Generated EF migrations: CI never applies them (RequiresSqlServer is filtered out).
+               OpenAPI XML-comment source generator output (namespaces Microsoft.AspNetCore.OpenApi.Generated
+               and System.Runtime.CompilerServices): framework code emitted into obj/, not ours to test. -->
+          <ExcludeByFile>**/Migrations/*.cs,**/OpenApiXmlCommentSupport.generated.cs</ExcludeByFile>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

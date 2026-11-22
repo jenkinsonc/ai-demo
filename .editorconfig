@@ -1,0 +1,52 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+# The web front end (TypeScript, CSS, HTML, JSON) uses 2-space indents; .NET code keeps the 4 above.
+[jarvis.Web/**]
+indent_size = 2
+
+[*.{cs,csx}]
+dotnet_sort_system_directives_first = true
+csharp_indent_accessors = one_line
+# Code-style preferences: braces only around multi-line bodies; methods have block bodies `{ }`, not `=>`.
+csharp_prefer_braces = when_multiline
+csharp_style_expression_bodied_methods = false
+
+# Style gate: surface these as build warnings too, so they are visible without
+# the IDE's "Code Style" pane and so a red build catches them (AGENTS.md,
+# "Done means green").
+dotnet_diagnostic.IDE0011.severity = warning
+dotnet_diagnostic.IDE0017.severity = warning
+dotnet_diagnostic.IDE0019.severity = warning
+dotnet_diagnostic.IDE0022.severity = warning
+dotnet_diagnostic.IDE0028.severity = warning
+dotnet_diagnostic.IDE0090.severity = warning
+dotnet_diagnostic.IDE0230.severity = warning
+dotnet_diagnostic.IDE0300.severity = warning
+dotnet_diagnostic.IDE0305.severity = warning
+dotnet_diagnostic.MSTEST0037.severity = warning
+dotnet_diagnostic.MSTEST0044.severity = warning
+dotnet_diagnostic.MSTEST0046.severity = warning
+dotnet_diagnostic.CA1825.severity = warning
+dotnet_diagnostic.CA1861.severity = warning
+dotnet_diagnostic.CA1862.severity = warning
+dotnet_diagnostic.CS8632.severity = warning
+dotnet_diagnostic.ASP0025.severity = warning
+
+[*.{csproj,props,targets,runsettings,config}]
+indent_size = 2
+
+# EF Core migrations are auto-generated and regenerated wholesale, so they are exempt from every analyzer and IDE diagnostic.
+# See docs/agents/suppressions.md, "Excluded" (auto-generated code is excluded from the suppression policy).
+[**/Migrations/**.cs]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none
+
+[*.json]
+indent_size = 2

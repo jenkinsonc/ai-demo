@@ -1,5 +1,9 @@
 <Solution>
+  <Project Path="aidemo.Integrations/aidemo.Integrations.csproj" />
+  <Project Path="aidemo.Models/aidemo.Models.csproj" />
+  <Project Path="aidemo.Tests/aidemo.Tests.csproj" />
   <Project Path="aidemo.AppHost/aidemo.AppHost.csproj" />
+  <Project Path="aidemo.Endpoints/aidemo.Endpoints.csproj" />
   <Project Path="aidemo.Server/aidemo.Server.csproj" />
   <Project Path="frontend/frontend.esproj">
     <Build />

@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="10.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="HttpContextMoq" Version="1.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.14" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.Testing" Version="10.11.0" />
+    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" Version="10.11.0" />
+    <PackageReference Include="MSTest" Version="4.5.2" />
+    <PackageReference Include="MSTest.TestAdapter" Version="4.5.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="4.5.2" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.22" />
+    <PackageReference Include="TngTech.ArchUnitNET" Version="0.13.5" />
+    <PackageReference Include="TngTech.ArchUnitNET.MSTestV4" Version="0.13.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ServiceTests\" />
+    <Folder Include="RepositoryTests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\aidemo.AppHost\aidemo.AppHost.csproj" />
+    <ProjectReference Include="..\aidemo.Endpoints\aidemo.Endpoints.csproj" />
+    <ProjectReference Include="..\aidemo.Integrations\aidemo.Integrations.csproj" />
+    <ProjectReference Include="..\aidemo.Models\aidemo.Models.csproj" />
+    <ProjectReference Include="..\aidemo.Server\aidemo.Server.csproj" />
+  </ItemGroup>
+
+</Project>
