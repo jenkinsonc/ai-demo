@@ -8,7 +8,7 @@ trim_trailing_whitespace = true
 insert_final_newline = false
 
 # The web front end (TypeScript, CSS, HTML, JSON) uses 2-space indents; .NET code keeps the 4 above.
-[jarvis.Web/**]
+[frontend/**]
 indent_size = 2
 
 [*.{cs,csx}]
@@ -43,7 +43,7 @@ dotnet_diagnostic.ASP0025.severity = warning
 indent_size = 2
 
 # EF Core migrations are auto-generated and regenerated wholesale, so they are exempt from every analyzer and IDE diagnostic.
-# See docs/agents/suppressions.md, "Excluded" (auto-generated code is excluded from the suppression policy).
+# See .docs/agents/suppressions.md, "Excluded" (auto-generated code is excluded from the suppression policy).
 [**/Migrations/**.cs]
 generated_code = true
 dotnet_analyzer_diagnostic.severity = none

@@ -44,7 +44,7 @@ namespace aidemo.Tests.ArchitectureTests
             rule.Check(ArchitectureDefinition.Architecture);
         }
 
-        // The "Accepted return types" table in docs/agents/endpoint-result-types.md. Generic entries are open definitions.
+        // The "Accepted return types" table in .docs/agents/endpoint-result-types.md. Generic entries are open definitions.
         private static readonly HashSet<Type> AcceptedResultTypes =
         [
             typeof(Ok<>),
@@ -66,7 +66,7 @@ namespace aidemo.Tests.ArchitectureTests
                 .Select(m => $"{m.DeclaringType.FullName}.{m.Name} returns {m.ReturnType}")
                 .ToList();
 
-            Assert.IsEmpty(violations, $"Endpoints should return only the accepted result types in docs/agents/endpoint-result-types.md: {string.Join(", ", violations)}");
+            Assert.IsEmpty(violations, $"Endpoints should return only the accepted result types in .docs/agents/endpoint-result-types.md: {string.Join(", ", violations)}");
         }
 
         [TestMethod]

@@ -8,7 +8,7 @@ namespace aidemo.Tests.ArchitectureTests
 {
     /// <summary>
     /// Every suppression in the repo - .NET and web - carries a link to its `suppressions` issue, as
-    /// docs/agents/suppressions.md requires. Scans the source tree, so it runs from the build output.
+    /// .docs/agents/suppressions.md requires. Scans the source tree, so it runs from the build output.
     /// </summary>
     [TestClass]
     public sealed partial class SuppressionArchitectureTests
@@ -27,7 +27,7 @@ namespace aidemo.Tests.ArchitectureTests
                 .SelectMany(f => Violations(root, f))
                 .ToList();
 
-            Assert.IsEmpty(violations, $"Each suppression needs approval and its own `suppressions` issue, referenced as `issue #<n>` on its line or the line above (docs/agents/suppressions.md):{Environment.NewLine}{string.Join(Environment.NewLine, violations)}");
+            Assert.IsEmpty(violations, $"Each suppression needs approval and its own `suppressions` issue, referenced as `issue #<n>` on its line or the line above (.docs/agents/suppressions.md):{Environment.NewLine}{string.Join(Environment.NewLine, violations)}");
         }
 
         private static IEnumerable<string> Violations(string root, string file)
