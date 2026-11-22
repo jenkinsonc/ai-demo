@@ -1,0 +1,10 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- Surfaces the IDE* style rules promoted in .editorconfig as build warnings, so the build reports what the IDE does. -->
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <!-- Nullable reference types are off in every project (CODING_STANDARDS.md, "Nullability & string defaults"). -->
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+</Project>
